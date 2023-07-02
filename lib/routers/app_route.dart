@@ -17,13 +17,14 @@ import 'package:hdt_flutter/view/menu_view.dart';
 import 'package:hdt_flutter/view/mesas_view.dart';
 import 'package:hdt_flutter/view/perfil_view.dart';
 import 'package:hdt_flutter/view/platos_recomendados_view.dart';
+import 'package:hdt_flutter/view/register_view.dart';
 import 'package:hdt_flutter/view/restaurante_view.dart';
 import 'package:provider/provider.dart';
 
 class AppRouter {
   static GoRouter config() {
     return GoRouter(
-      initialLocation: "/home/perfil",
+      initialLocation: "/lib/view/register_view.dart",
       routes: [
         ShellRoute(
           builder: (context, state, child) {
@@ -174,13 +175,24 @@ class AppRouter {
               },
             ),
             GoRoute(
-              path: '/login',
-              name: '/login',
+              path: '/lib/view/login_view.dart',
+              name: '/lib/view/login_view.dart',
               pageBuilder: (context, state) {
                 return NoTransitionPage<void>(
                   key: state.pageKey,
                   restorationId: state.pageKey.value,
                   child: const LoginView(),
+                );
+              },
+            ),
+            GoRoute(
+              path: '/lib/view/register_view.dart',
+              name: '/lib/view/register_view.dart',
+              pageBuilder: (context, state) {
+                return NoTransitionPage<void>(
+                  key: state.pageKey,
+                  restorationId: state.pageKey.value,
+                  child: const RegisterView(),
                 );
               },
             ),
