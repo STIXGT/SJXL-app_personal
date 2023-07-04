@@ -1,103 +1,149 @@
 import 'package:flutter/material.dart';
 
-class RegisterView extends StatefulWidget {
+class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
   @override
-  State<RegisterView> createState() => RegisterViewState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 248, 244),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              Image(
+                image: AssetImage("assets/logo.png"),
+                width: 250,
+              ),
+              Divider(
+                color: Colors.transparent,
+                height: 25.0,
+              ),
+              RegisterForm(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class RegisterViewState extends State<RegisterView> {
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
+
+  @override
+  State<RegisterForm> createState() => RegisterFormState();
+}
+
+class RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         key: _formKey,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Image(
-                image: AssetImage("assets/logo.png"),
-                width: 250,
-              ),
-              const Divider(
-                color: Colors.transparent,
-                height: 25.0,
-              ),
               TextFormField(
-                  onChanged: (text) {
-                    print('First text field: $text');
-                  },
-                  validator: (valid) {
-                    if (valid == null || valid.isEmpty) {
-                      "Please enter some text";
-                    }
-                    return null;
-                  },
-                  autofocus: true,
-                  textCapitalization: TextCapitalization.characters,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.person),
                     hintText: "Escriba algo",
-                    labelText: "Nombre: ",
+                    labelText: "Nombres: ",
                     border: OutlineInputBorder(),
-                  )),
+                  ),
+                  validator: (valueName) {
+                    if (valueName!.isEmpty) {
+                      return 'Ingrese sus nombres completos';
+                    } else {
+                      return null;
+                    }
+                  }),
               const Divider(
                 color: Colors.transparent,
                 height: 18.0,
               ),
               TextFormField(
-                  enableInteractiveSelection: false,
-                  textCapitalization: TextCapitalization.characters,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.last_page),
                     hintText: "Escriba algo",
-                    labelText: "Apellido:",
+                    labelText: "Apellidos:",
                     border: OutlineInputBorder(),
-                  )),
+                  ),
+                  validator: (valueLastName) {
+                    if (valueLastName!.isEmpty) {
+                      return 'Ingrese sus apellidos completos';
+                    } else {
+                      return null;
+                    }
+                  }),
               const Divider(
                 color: Colors.transparent,
                 height: 18.0,
               ),
               TextFormField(
-                  enableInteractiveSelection: false,
-                  textCapitalization: TextCapitalization.characters,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.email),
                     hintText: "Escriba algo",
                     labelText: "Email:",
                     border: OutlineInputBorder(),
-                  )),
+                  ),
+                  validator: (valueEmail) {
+                    if (valueEmail!.isEmpty) {
+                      return 'Ingrese un email';
+                    } else {
+                      return null;
+                    }
+                  }),
               const Divider(
                 color: Colors.transparent,
                 height: 18.0,
               ),
               TextFormField(
-                  enableInteractiveSelection: false,
-                  textCapitalization: TextCapitalization.characters,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.phone),
                     hintText: "Escriba algo",
                     labelText: "Teléfono:",
                     border: OutlineInputBorder(),
-                  )),
+                  ),
+                  validator: (valueCell) {
+                    if (valueCell!.isEmpty) {
+                      return 'Ingrese número telefónico';
+                    } else if (valueCell.length < 10) {
+                      return 'Ingrese 10 dígitos';
+                    } else {
+                      return null;
+                    }
+                  }),
               const Divider(
                 color: Colors.transparent,
                 height: 18.0,
               ),
               TextFormField(
-                  enableInteractiveSelection: false,
-                  textCapitalization: TextCapitalization.characters,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     icon: Icon(Icons.menu_book_outlined),
                     hintText: "Escriba algo",
                     labelText: "Cédula:",
                     border: OutlineInputBorder(),
-                  )),
+                  ),
+                  validator: (valueCed) {
+                    if (valueCed!.isEmpty) {
+                      return 'Ingrese su cédula';
+                    } else if (valueCed.length < 10) {
+                      return 'Ingrese 10 dígitos';
+                    } else if (valueCed.length > 10) {
+                      return 'Máximo 10 dígitos';
+                    } else {
+                      return null;
+                    }
+                  }),
               const Divider(
                 color: Colors.transparent,
-                height: 18.0,
+                height: 25.0,
               ),
               ElevatedButton(
                 onPressed: () {

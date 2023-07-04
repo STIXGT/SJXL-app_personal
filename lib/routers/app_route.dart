@@ -13,18 +13,18 @@ import 'package:hdt_flutter/view/favoritos_view.dart';
 import 'package:hdt_flutter/view/home_view.dart';
 import 'package:hdt_flutter/view/idioma_view.dart';
 import 'package:hdt_flutter/view/login_view.dart';
+import 'package:hdt_flutter/view/register_view.dart';
 import 'package:hdt_flutter/view/menu_view.dart';
 import 'package:hdt_flutter/view/mesas_view.dart';
 import 'package:hdt_flutter/view/perfil_view.dart';
 import 'package:hdt_flutter/view/platos_recomendados_view.dart';
-import 'package:hdt_flutter/view/register_view.dart';
 import 'package:hdt_flutter/view/restaurante_view.dart';
 import 'package:provider/provider.dart';
 
 class AppRouter {
   static GoRouter config() {
     return GoRouter(
-      initialLocation: "/lib/view/register_view.dart",
+      initialLocation: "/register",
       routes: [
         ShellRoute(
           builder: (context, state, child) {
@@ -175,8 +175,8 @@ class AppRouter {
               },
             ),
             GoRoute(
-              path: '/lib/view/login_view.dart',
-              name: '/lib/view/login_view.dart',
+              path: '/login',
+              name: '/login',
               pageBuilder: (context, state) {
                 return NoTransitionPage<void>(
                   key: state.pageKey,
@@ -186,8 +186,8 @@ class AppRouter {
               },
             ),
             GoRoute(
-              path: '/lib/view/register_view.dart',
-              name: '/lib/view/register_view.dart',
+              path: '/register',
+              name: '/register',
               pageBuilder: (context, state) {
                 return NoTransitionPage<void>(
                   key: state.pageKey,
