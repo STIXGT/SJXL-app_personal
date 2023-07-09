@@ -7,22 +7,21 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 248, 244),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              Image(
-                image: AssetImage("assets/logo.png"),
-                width: 250,
-              ),
-              Divider(
-                color: Colors.transparent,
-                height: 25.0,
-              ),
-              RegisterForm(),
-            ],
+      body: Column(
+        children: [
+          Image(
+            image: AssetImage("assets/logo.png"),
+            width: 250,
           ),
-        ),
+          Divider(
+            color: Colors.transparent,
+            height: 25.0,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.0),
+            child: RegisterForm(),
+          ),
+        ],
       ),
     );
   }
